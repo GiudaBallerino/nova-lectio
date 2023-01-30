@@ -64,4 +64,4 @@ buck-out/
 /vendor/bundle/
 
 # Project
-src/utils/config.tsx
+src/config.ts
