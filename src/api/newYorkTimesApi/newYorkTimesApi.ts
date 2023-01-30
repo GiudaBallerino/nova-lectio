@@ -1,4 +1,4 @@
-import NYTAPIKEY from '../../utils/config';
+import NYTAPIKEY from '../../config';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { BestSellers, BestSellerBook } from './models/bestSellers';
 
