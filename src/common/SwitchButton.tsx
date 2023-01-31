@@ -22,9 +22,9 @@ const SwitchButton = (props: Props) => {
     <IconButton
       icon={props.icons[0]}
       mode="outlined"
-      containerColor={colors.onTertiary}
-      iconColor={colors.onTertiaryContainer}
-      style={{ borderColor: colors.onTertiary }}
+      containerColor={colors.onTertiaryContainer}
+      iconColor={colors.tertiaryContainer}
+      style={{ borderColor: colors.onTertiaryContainer }}
       size={props.size}
       onPress={props.onTrue}
     />
@@ -32,8 +32,8 @@ const SwitchButton = (props: Props) => {
     <IconButton
       icon={props.icons[1]}
       mode="outlined"
-      iconColor={colors.onTertiary}
-      style={{ borderColor: colors.onTertiary }}
+      iconColor={colors.onTertiaryContainer}
+      style={{ borderColor: colors.onTertiaryContainer }}
       size={props.size}
       onPress={props.onFalse}
     />

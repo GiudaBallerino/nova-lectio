@@ -118,7 +118,7 @@ const InfoSection = (props: InfoSectionProps) => {
       <View
         style={{
           ...styles.container,
-          backgroundColor: colors.tertiary,
+          backgroundColor: colors.tertiaryContainer,
           height: imageHeigh * 0.75 > 120 ? imageHeigh * 0.75 : 120,
           paddingLeft: imageWidth + 30,
         }}>
@@ -126,15 +126,17 @@ const InfoSection = (props: InfoSectionProps) => {
           <View
             style={{
               ...styles.tag,
-              backgroundColor: colors.onTertiary,
+              backgroundColor: colors.onTertiaryContainer,
             }}>
-            <Text style={{ color: colors.onTertiaryContainer }}>
+            <Text style={{ color: colors.tertiaryContainer }}>
               {props.bookData.book.volumeInfo?.language?.toUpperCase()}
             </Text>
           </View>
           {props.bookData.book.volumeInfo?.pageCount &&
           props.bookData.book.volumeInfo?.pageCount > 0 ? (
-            <Text variant="displayMedium" style={{ color: colors.onTertiary }}>
+            <Text
+              variant="displayMedium"
+              style={{ color: colors.onTertiaryContainer }}>
               {(progress * 100).toFixed(0)}%
             </Text>
           ) : (
@@ -142,7 +144,9 @@ const InfoSection = (props: InfoSectionProps) => {
           )}
           {props.bookData.book.volumeInfo?.pageCount &&
           props.bookData.book.volumeInfo?.pageCount > 0 ? (
-            <Text variant="titleSmall" style={{ color: colors.onTertiary }}>
+            <Text
+              variant="titleSmall"
+              style={{ color: colors.onTertiaryContainer }}>
               Tempo: {formatDuration(readingTime)}
             </Text>
           ) : (

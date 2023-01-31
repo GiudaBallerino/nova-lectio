@@ -2,6 +2,7 @@ import { BottomSheetModal, BottomSheetScrollView } from '@gorhom/bottom-sheet';
 import { BottomSheetModalMethods } from '@gorhom/bottom-sheet/lib/typescript/types';
 import * as React from 'react';
 import { BackHandler } from 'react-native';
+import { useAppTheme } from '../../../../state/hooks';
 import BookPage from './component/BookPage';
 
 //-- Props
@@ -18,6 +19,9 @@ const BookBottomSheetModal = ({
   onDismiss,
 }: BBSMProps) => {
   // -- Hooks
+  // Get theme colors
+  const { colors } = useAppTheme();
+
   // Handles back button press
   React.useEffect(() => {
     const backAction = () => {
@@ -39,6 +43,7 @@ const BookBottomSheetModal = ({
       index={0}
       snapPoints={['100%']}
       enablePanDownToClose={true}
+      backgroundStyle={{ backgroundColor: colors.background }}
       onDismiss={onDismiss}>
       <BottomSheetScrollView>
         <BookPage id={id} />
