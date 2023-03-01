@@ -1,0 +1,40 @@
+{
+  "general": {
+    "add": "aggiungi",
+    "edit": "modifica",
+    "back": "indietro",
+    "done":"fatto"
+  },
+  "nav": {
+    "bookshelf": "libreria",
+    "gallery": "galleria",
+    "more": "altro"
+  },
+  "gallery": {
+    "best_seller": "best seller"
+  },
+  "more": {
+    "folders": "folders",
+    "stats": "statistiche",
+    "theme": "tema",
+    "lang": "lingua",
+    "info": "info",
+    "light": "chiaro",
+    "dark": "scuro"
+  },
+  "book":{
+    "options": "opzioni",
+    "fav": "preferito",
+    "move": "sposta",
+    "remove": "rimuovi dalla libreria",
+    "plot": "trama",
+    "no-plot": "nessuna trama",
+    "select": "seleziona folders",
+    "all": "tutto",
+    "add": "aggiungi il libro"
+  },
+  "folders": {
+    "new": "nuova folder",
+    "edit": "modifica folder"
+  }
+}
