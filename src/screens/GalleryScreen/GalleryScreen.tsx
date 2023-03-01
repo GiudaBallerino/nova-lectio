@@ -16,6 +16,7 @@ import {
 } from '@react-navigation/native';
 import merge from 'deepmerge';
 import { useAppTheme } from '../../state/hooks';
+import { useTranslation } from 'react-i18next';
 
 // adapt react navigation theme to react native paper theme
 const { DarkTheme, LightTheme } = adaptNavigationTheme({
@@ -25,6 +26,9 @@ const { DarkTheme, LightTheme } = adaptNavigationTheme({
 
 const GalleryScreen = () => {
   //-- Hooks
+  // get translation
+  const { t, i18n } = useTranslation();
+
   // get theme colors
   const { dark, colors } = useAppTheme();
 
@@ -45,9 +49,9 @@ const GalleryScreen = () => {
         screenOptions={({ route }) => ({
           tabBarIndicatorStyle: styles.indicator,
         })}>
-        <Tab.Screen name="Reading" component={Reading} />
-        <Tab.Screen name="To Read" component={ToRead} />
-        <Tab.Screen name="Readed" component={Readed} />
+        <Tab.Screen name={t('TAB_READING')} component={Reading} />
+        <Tab.Screen name={t('TAB_TOREAD')} component={ToRead} />
+        <Tab.Screen name={t('TAB_READED')} component={Readed} />
       </Tab.Navigator>
     </NavigationContainer>
   );

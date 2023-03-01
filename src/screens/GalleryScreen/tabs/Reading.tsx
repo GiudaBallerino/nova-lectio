@@ -1,17 +1,8 @@
 import { BottomSheetModal } from '@gorhom/bottom-sheet';
 import * as React from 'react';
-import {
-  BackHandler,
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import { ScrollView, TouchableOpacity } from 'react-native';
 import {} from 'react-native-paper';
-import { Book } from '../../../api/googleBooksApi/models/book';
-import { useAppDispatch, useAppSelector } from '../../../state/hooks';
+import { useAppSelector } from '../../../state/hooks';
 import { BookData } from '../../../utils/models/bookData';
 import BookBottomSheetModal from '../components/BookBottomSheetModal/BookBottomSheetModal';
 import BookCard from '../components/BookCard';

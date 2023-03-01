@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { FlatList, ScrollView } from 'react-native';
 import { BookData } from '../../../utils/models/bookData';
 import BookCard from './BookCard';
@@ -14,6 +15,9 @@ interface BookListProps {
 
 const BookFlatList = ({ data, limited, setOpenedBook }: BookListProps) => {
   //-- Hooks
+  // get translation
+  const { t, i18n } = useTranslation();
+
   //state for books
   const [books, setBooks] = React.useState<BookData[]>([]);
 
@@ -59,9 +63,7 @@ const BookFlatList = ({ data, limited, setOpenedBook }: BookListProps) => {
             }}
           />
         )}
-        ListEmptyComponent={
-          <EmptyBookCard label="Aggiungi un libro alla libreria" />
-        }
+        ListEmptyComponent={<EmptyBookCard label={t('EMPTY_LIST')} />}
         numColumns={3}
         scrollEnabled={false}
         contentContainerStyle={{ flexGrow: 1, paddingVertical: 20 }}

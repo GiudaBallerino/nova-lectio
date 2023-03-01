@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useTranslation } from 'react-i18next';
 import { View, Image, Dimensions, StyleSheet } from 'react-native';
 import { Text } from 'react-native-paper';
 import SwitchButton from '../../../../../common/SwitchButton';
@@ -15,6 +16,8 @@ interface InfoSectionProps {
 
 const InfoSection = (props: InfoSectionProps) => {
   //-- Const
+  // get translation
+  const { t, i18n } = useTranslation();
   //set image width
   const imageWidth = Dimensions.get('window').width * 0.3;
 
@@ -76,13 +79,13 @@ const InfoSection = (props: InfoSectionProps) => {
   const formatDuration = (ms: number) => {
     if (ms < 0) ms = -ms;
     const time = {
-      g: Math.floor(ms / 86400000),
-      o: Math.floor(ms / 3600000) % 24,
-      m: Math.floor(ms / 60000) % 60,
+      D: Math.floor(ms / 86400000),
+      H: Math.floor(ms / 3600000) % 24,
+      M: Math.floor(ms / 60000) % 60,
     };
     return Object.entries(time)
       .filter(val => val[1] !== 0)
-      .map(([key, val]) => `${val}${key}`)
+      .map(([key, val]) => `${val}${t(key)}`)
       .join(', ');
   };
 
@@ -147,7 +150,7 @@ const InfoSection = (props: InfoSectionProps) => {
             <Text
               variant="titleSmall"
               style={{ color: colors.onTertiaryContainer }}>
-              Tempo: {formatDuration(readingTime)}
+              {t('TIME')}: {formatDuration(readingTime)}
             </Text>
           ) : (
             <></>

@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, StyleSheet, TouchableOpacity } from 'react-native';
-import { MD3DarkTheme, Text } from 'react-native-paper';
+import { useTranslation } from 'react-i18next';
+import { View, StyleSheet } from 'react-native';
+import { Text } from 'react-native-paper';
 import { useAppTheme } from '../../../state/hooks';
 
 //-- Props
@@ -10,6 +11,8 @@ interface ReadedCardProps {
 }
 const ReadedCard = ({ num }: ReadedCardProps) => {
   //-- Hooks
+  // get translation
+  const { t, i18n } = useTranslation();
   // get theme colors
   const { colors } = useAppTheme();
 
@@ -21,7 +24,7 @@ const ReadedCard = ({ num }: ReadedCardProps) => {
         backgroundColor: colors.tertiaryContainer,
       }}>
       <View style={styles.title}>
-        <Text variant="titleMedium">LIBRI LETTI</Text>
+        <Text variant="titleMedium">{t('READED_BOOKS')}</Text>
       </View>
       <View style={styles.content}>
         <Text variant="headlineMedium">{num}</Text>

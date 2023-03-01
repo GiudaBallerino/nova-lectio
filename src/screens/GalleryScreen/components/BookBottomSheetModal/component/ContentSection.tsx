@@ -3,6 +3,7 @@ import { View, StyleSheet } from 'react-native';
 import { Text } from 'react-native-paper';
 import { useAppTheme } from '../../../../../state/hooks';
 import { BookData } from '../../../../../utils/models/bookData';
+import { useTranslation } from 'react-i18next';
 
 //-- Props
 // define props
@@ -12,6 +13,9 @@ interface ContentSectionProps {
 
 const ContentSection = (props: ContentSectionProps) => {
   //-- Hooks
+  // get translation
+  const { t, i18n } = useTranslation();
+
   // get theme colors
   const { colors } = useAppTheme();
 
@@ -32,7 +36,7 @@ const ContentSection = (props: ContentSectionProps) => {
             {props.bookData.book.volumeInfo?.description}
           </Text>
         ) : (
-          <Text variant="bodyMedium">Nessuna descrizione</Text>
+          <Text variant="bodyMedium">{t('EMPTY_DESCRIPTION')}</Text>
         )}
       </View>
     </View>

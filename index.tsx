@@ -15,7 +15,8 @@ import {
   useTheme,
 } from 'react-native-paper';
 import React from 'react';
-import { ThemeProp } from 'react-native-paper/lib/typescript/types';
+import i18n from './src/i18n/i18n';
+import { I18nextProvider } from 'react-i18next';
 
 // get the color scheme from the device
 const colorScheme = Appearance.getColorScheme();
@@ -31,7 +32,9 @@ AppRegistry.registerComponent(appName, () => () => (
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
       <PaperProvider theme={theme}>
-        <App />
+        <I18nextProvider i18n={i18n}>
+          <App />
+        </I18nextProvider>
       </PaperProvider>
     </PersistGate>
   </Provider>

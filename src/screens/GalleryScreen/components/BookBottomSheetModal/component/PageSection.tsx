@@ -2,6 +2,7 @@ import * as React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Divider, IconButton, Menu, Text } from 'react-native-paper';
 import { BookData } from '../../../../../utils/models/bookData';
+import { useTranslation } from 'react-i18next';
 
 //-- Props
 // define props
@@ -12,6 +13,9 @@ interface PageSectionProps {
 
 const PageSection = (props: PageSectionProps) => {
   //-- Hooks
+  // get translation
+  const { t, i18n } = useTranslation();
+
   // state for minus menu
   const [minusVisible, setMinusVisible] = React.useState(false);
   // state for plus menu
@@ -83,7 +87,7 @@ const PageSection = (props: PageSectionProps) => {
             onPress={() => {
               props.onUpdate(Number.MIN_SAFE_INTEGER);
             }}
-            title="Segna come non letto"
+            title={t('SET_NOT_READED')}
           />
         </Menu>
         <Text variant="displayMedium" style={styles.pageCount}>
@@ -129,7 +133,7 @@ const PageSection = (props: PageSectionProps) => {
             onPress={() => {
               props.onUpdate(Number.MAX_SAFE_INTEGER);
             }}
-            title="Segna come letto"
+            title={t('SET_READED')}
           />
         </Menu>
       </View>

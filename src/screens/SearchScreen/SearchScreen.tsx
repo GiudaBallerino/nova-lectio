@@ -19,9 +19,12 @@ import { BookData } from '../../utils/models/bookData';
 import { BottomSheetModal } from '@gorhom/bottom-sheet';
 import BookBottomSheetModal from './components/BookBottomSheetModal/BookBottomSheetModal';
 import { useAppTheme } from '../../state/hooks';
+import { useTranslation } from 'react-i18next';
 
 const SearchScreen = () => {
   // -- Hooks
+  // get translation
+  const { t, i18n } = useTranslation();
   // Hook for getting the theme colors
   const { colors } = useAppTheme();
   // State for search query and toggle to skip API call
@@ -159,7 +162,7 @@ const SearchScreen = () => {
             ...styles.searchbar,
             backgroundColor: colors.tertiaryContainer,
           }}
-          placeholder="Search"
+          placeholder={t('SEARCH')!}
           onChangeText={onChangeQuery}
           value={query.query}
         />

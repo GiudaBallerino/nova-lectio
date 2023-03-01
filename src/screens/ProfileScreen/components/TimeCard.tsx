@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import { MD3DarkTheme, Text } from 'react-native-paper';
 import { useAppTheme } from '../../../state/hooks';
@@ -10,6 +11,9 @@ interface TimeCardProps {
 }
 const TimeCard = ({ time }: TimeCardProps) => {
   //-- Hooks
+  // get translation
+  const { t, i18n } = useTranslation();
+
   // get theme colors
   const { colors } = useAppTheme();
 
@@ -37,20 +41,20 @@ const TimeCard = ({ time }: TimeCardProps) => {
         backgroundColor: colors.tertiaryContainer,
       }}>
       <View style={styles.title}>
-        <Text variant="titleMedium">TEMPO LETTURA</Text>
+        <Text variant="titleMedium">{t('READING_TIME')}</Text>
       </View>
       <View style={styles.statisticSection}>
         <View style={styles.content}>
           <Text variant="bodyLarge">{formatDuration(time).month}</Text>
-          <Text variant="labelMedium">mesi</Text>
+          <Text variant="labelMedium">{t('MONTHS')}</Text>
         </View>
         <View style={styles.content}>
           <Text variant="bodyLarge">{formatDuration(time).day}</Text>
-          <Text variant="labelMedium">giorni</Text>
+          <Text variant="labelMedium">{t('DAYS')}</Text>
         </View>
         <View style={styles.content}>
           <Text variant="bodyLarge">{formatDuration(time).hour}</Text>
-          <Text variant="labelMedium">ore</Text>
+          <Text variant="labelMedium">{t('HOURS')}</Text>
         </View>
       </View>
     </View>

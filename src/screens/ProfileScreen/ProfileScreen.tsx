@@ -9,9 +9,12 @@ import BookBottomSheetModal from '../GalleryScreen/components/BookBottomSheetMod
 import BookFlatList from './components/BookFlatList';
 import TimeCard from './components/TimeCard';
 import ReadedCard from './components/ReadedCard';
+import { useTranslation } from 'react-i18next';
 
 const ProfileScreen = () => {
   //-- Hooks
+  // get translation
+  const { t, i18n } = useTranslation();
   //list of all added books
   const books = useAppSelector(store => store.bookshelf.bookshelf);
 
@@ -63,7 +66,7 @@ const ProfileScreen = () => {
     <>
       <ScrollView>
         <View style={{ ...styles.sectionTitle, paddingVertical: 20 }}>
-          <Text variant="titleLarge">Statistiche</Text>
+          <Text variant="titleLarge">{t('STATS')}</Text>
         </View>
         <View style={styles.statisticSection}>
           <TimeCard time={readingTime} />
@@ -76,10 +79,10 @@ const ProfileScreen = () => {
         </View>
 
         <View style={styles.sectionTitle}>
-          <Text variant="titleLarge">I miei libri</Text>
+          <Text variant="titleLarge">{t('MY_BOOKS')}</Text>
           {bookshelf.length >= 7 ? (
             <Button onPress={() => setLimitBookshelf(!limitBookshelf)}>
-              {limitBookshelf ? 'Di più' : 'Di meno'}
+              {limitBookshelf ? t('MORE') : t('LESS')}
             </Button>
           ) : (
             <></>
@@ -92,11 +95,11 @@ const ProfileScreen = () => {
         />
 
         <View style={styles.sectionTitle}>
-          <Text variant="titleLarge">I miei preferiti</Text>
+          <Text variant="titleLarge">{t('MY_FAVORITES')}</Text>
 
           {favorites.length >= 7 ? (
             <Button onPress={() => setLimitFavorites(!limitFavorites)}>
-              {limitFavorites ? 'Di più' : 'Di meno'}
+              {limitFavorites ? t('MORE') : t('LESS')}
             </Button>
           ) : (
             <></>
