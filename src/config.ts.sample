@@ -1,4 +1,0 @@
-//Rename the file as config.ts and replace the API_KEY
-const NYTAPIKEY: string = 'API_KEY';
-
-export default NYTAPIKEY;

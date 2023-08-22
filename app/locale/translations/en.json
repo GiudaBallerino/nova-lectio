@@ -1,0 +1,53 @@
+{
+  "general": {
+    "add": "add",
+    "edit": "edit",
+    "back": "back",
+    "done":"done",
+    "all": "all"
+  },
+  "nav": {
+    "bookshelf": "bookshelf",
+    "gallery": "gallery",
+    "more": "more"
+  },
+  "gallery": {
+    "best_seller": "best seller"
+  },
+  "more": {
+    "folders": "folders",
+    "stats": "stats",
+    "select_theme": "select theme",
+    "theme": "theme",
+    "select_lang": "select language",
+    "lang": "language",
+    "info": "info",
+    "light": "light",
+    "dark": "dark"
+  },
+  "book":{
+    "options": "options",
+    "fav": "favorite",
+    "move": "move",
+    "remove": "remove from library",
+    "plot": "plot",
+    "no-plot": "No plot provided",
+    "select": "select folders",
+    "all": "all",
+    "add": "add this book"
+  },
+  "folders": {
+    "new": "new folder",
+    "edit": "edit folder"
+  },
+  "search": {
+    "filters": "filters"
+  },
+  "stats": {
+    "time": "reading time",
+    "read": "readed books",
+    "month": "months",
+    "day": "days",
+    "hour": "hours"
+  }
+}
