@@ -3,7 +3,8 @@
     "add": "aggiungi",
     "edit": "modifica",
     "back": "indietro",
-    "done":"fatto"
+    "done":"fatto",
+    "all": "tutto"
   },
   "nav": {
     "bookshelf": "libreria",
@@ -16,8 +17,10 @@
   "more": {
     "folders": "folders",
     "stats": "statistiche",
+    "select_theme": "seleziona tema",
     "theme": "tema",
-    "lang": "lingua",
+    "select_lang": "seleziona lingua",
+    "lang": "lingue",
     "info": "info",
     "light": "chiaro",
     "dark": "scuro"
@@ -28,13 +31,23 @@
     "move": "sposta",
     "remove": "rimuovi dalla libreria",
     "plot": "trama",
-    "no-plot": "nessuna trama",
-    "select": "seleziona folders",
+    "no-plot": "nessuna trama fornita",
+    "select": "nelleziona folders",
     "all": "tutto",
     "add": "aggiungi il libro"
   },
   "folders": {
     "new": "nuova folder",
     "edit": "modifica folder"
+  },
+  "search": {
+    "filters": "filtri"
+  },
+  "stats": {
+    "time": "tempo di lettura",
+    "read": "libri letti",
+    "month": "mesi",
+    "day": "giorni",
+    "hour": "ore"
   }
 }

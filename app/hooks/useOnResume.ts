@@ -1,22 +1,21 @@
-import { useEffect } from 'react';
-import * as RNLocalize from 'react-native-localize';
+import { useCallback, useEffect } from 'react';
 import i18n, { isLanguageAvailable } from '../locale';
-import { store } from '../store/store';
+import useAppSelector from './useAppSelector';
 
 function useOnResume() {
-    // Methods
-    const updateLanguage = () => {
-        const languageCode = store.getState().settings.language;
+    const languageCode = useAppSelector(store => store.settings.language);
 
+    // Callbacks
+    const updateLanguage = useCallback(() => {
         if (isLanguageAvailable(languageCode) && languageCode !== i18n.language) {
             i18n.changeLanguage(languageCode);
         }
-    };
+    }, [languageCode]);
 
     // Effects
     useEffect(() => {
         updateLanguage();
-    }, []);
+    }, [languageCode]);
 
     return 'Home';
 }

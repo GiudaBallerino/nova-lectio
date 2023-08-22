@@ -46,8 +46,8 @@
   "stats": {
     "time": "reading time",
     "read": "readed books",
-    "month": "month",
-    "day": "day",
-    "hour": "hour"
+    "month": "months",
+    "day": "days",
+    "hour": "hours"
   }
 }
