@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 import Scaffold from '../../components/commons/Scaffold';
 import Header from '../../components/commons/Header';
 import { MagnifyingGlassIcon } from 'react-native-heroicons/outline';
@@ -49,11 +49,6 @@ function GalleryScreen() {
         ),
         []
     );
-
-    //Effect
-    useEffect(() => {
-        console.log(bestSellers);
-    }, [bestSellers]);
 
     return (
         <Scaffold>
