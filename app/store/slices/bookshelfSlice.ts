@@ -41,7 +41,11 @@ export const bookshelfSlice = createSlice({
             state.bookshelf[index] = action.payload;
         },
         addFolder: (state, action) => {
-            if (state.folders.includes(action.payload.new) || !action.payload.new) {
+            if (
+                state.folders.includes(action.payload.new) ||
+                !action.payload.new ||
+                action.payload.new === action.payload.initial
+            ) {
                 return;
             }
             const index = state.folders.findIndex(f => f === action.payload.initial);

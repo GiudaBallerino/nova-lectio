@@ -1,14 +1,5 @@
-import React, { Ref, useCallback, useMemo, useState } from 'react';
-import {
-    Dimensions,
-    StyleSheet,
-    Text,
-    TextInput,
-    TextStyle,
-    TouchableOpacity,
-    View,
-    ViewStyle
-} from 'react-native';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { StyleSheet, TextInput, TextStyle, TouchableOpacity, View, ViewStyle } from 'react-native';
 import useTheme from '../../hooks/useTheme';
 import BaseText from '../commons/BaseText';
 
@@ -18,28 +9,58 @@ type FolderModalProps = {
     initialValue?: string;
 };
 
-const { width: layoutWidth, height: layoutHeight } = Dimensions.get('window');
 function FolderModal(props: FolderModalProps) {
     // Hooks
     const theme = useTheme();
 
     // States
     const [value, setValue] = useState<string | undefined>(props.initialValue);
+    const [inputState, setInputState] = useState<'initial' | 'valid' | 'invalid'>('initial');
 
     // Memos
-    const textInputStyle = useMemo<ViewStyle>(
-        () => ({
-            borderRadius: 10,
-            borderColor: theme.palette.primary,
-            borderWidth: 2,
-            paddingLeft: 5
-        }),
-        [theme]
-    );
+    const textInputStyle = useMemo<ViewStyle>(() => {
+        switch (inputState) {
+            case 'initial':
+                return {
+                    ...styles.textInput,
+                    borderColor: theme.palette.outline
+                };
+            case 'valid':
+                return {
+                    ...styles.textInput,
+                    borderColor: theme.palette.primary
+                };
+            case 'invalid':
+                return {
+                    ...styles.textInput,
+                    borderColor: theme.palette.error
+                };
+        }
+    }, [theme, inputState]);
 
     const textStyle = useMemo<TextStyle>(() => ({ color: theme.palette.onBackground }), [theme]);
-    const primaryButton = useMemo(() => theme.palette.primary, [theme]);
+    const primaryButton = useMemo(() => {
+        switch (inputState) {
+            case 'initial':
+                return theme.palette.outline;
+            case 'valid':
+                return theme.palette.primary;
+            case 'invalid':
+                return theme.palette.outline;
+        }
+    }, [theme]);
     const secondaryButton = useMemo(() => theme.palette.secondary, [theme]);
+
+    const primaryIsDisabled = useMemo<boolean>(() => {
+        switch (inputState) {
+            case 'initial':
+                return true;
+            case 'valid':
+                return false;
+            case 'invalid':
+                return true;
+        }
+    }, [inputState]);
 
     // Callbacks
     const handleOnDone = useCallback(() => {
@@ -49,6 +70,17 @@ function FolderModal(props: FolderModalProps) {
     const handleOnClose = useCallback(() => {
         props.onClose();
     }, [props.onClose]);
+
+    //Effects
+    useEffect(() => {
+        if (!value || !/\S/.test(value)) {
+            setInputState('invalid');
+        } else if (value === props.initialValue) {
+            setInputState('initial');
+        } else {
+            setInputState('valid');
+        }
+    }, [inputState, value]);
 
     return (
         <>
@@ -65,7 +97,7 @@ function FolderModal(props: FolderModalProps) {
                         general:back
                     </BaseText>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={handleOnDone}>
+                <TouchableOpacity onPress={handleOnDone} disabled={primaryIsDisabled}>
                     <BaseText
                         variant={'body'}
                         size={'large'}
@@ -95,6 +127,11 @@ const styles = StyleSheet.create({
     },
     textButton: {
         fontWeight: '500'
+    },
+    textInput: {
+        borderWidth: 2,
+        paddingLeft: 5,
+        borderRadius: 10
     }
 });
 

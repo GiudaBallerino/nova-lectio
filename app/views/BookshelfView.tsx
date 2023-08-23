@@ -35,7 +35,7 @@ function BookshelfView() {
                 initialParams={{ folder: t }}
             />
         ));
-        if (!list.length || books.length)
+        if (!list.length || (books.length && !folders.includes('Default')))
             return [
                 <Tab.Screen
                     key='Default'
