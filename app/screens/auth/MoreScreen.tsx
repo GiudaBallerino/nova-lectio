@@ -27,7 +27,9 @@ function MoreScreen() {
             250) *
         60000;
 
-    const count: number = useAppSelector(store => store.bookshelf.bookshelf).length;
+    const count: number = useAppSelector(store => store.bookshelf.bookshelf).filter(
+        b => b.currentPage === b.book.volumeInfo.pageCount && b.currentPage !== 0
+    ).length;
 
     // Refs
     const themeBottomSheetRef = useRef<BottomSheetMethods>(null);
