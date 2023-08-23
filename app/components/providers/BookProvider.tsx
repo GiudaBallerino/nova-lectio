@@ -48,11 +48,12 @@ function BookProvider(props: ProviderProps) {
         [state]
     );
 
-    // Methods
-    const openBook = (book: BookData) => {
-        setState(bookshelf.find(b => b.book.id === book.book.id));
-    };
+    const openBook = useCallback(
+        (book: BookData) => setState(bookshelf.find(b => b.book.id === book.book.id)),
+        [bookshelf]
+    );
 
+    // Methods
     const closeBook = () => {
         setState(undefined);
     };

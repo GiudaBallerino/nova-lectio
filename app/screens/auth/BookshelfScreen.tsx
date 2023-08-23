@@ -30,8 +30,11 @@ function BookshelfScreen({
     );
 
     // Callbacks
-    const handleOnPress = useCallback((book: BookData) => navigation.push('Book', { book }), []);
-    const handleOnLongPress = useCallback((book: BookData) => open(book), []);
+    const handleOnPress = useCallback(
+        (book: BookData) => navigation.push('Book', { book }),
+        [navigation]
+    );
+    const handleOnLongPress = useCallback((book: BookData) => open(book), [open]);
     const renderCard = useCallback(
         ({ item }: { item: BookData }) => (
             <BookCard
@@ -45,7 +48,7 @@ function BookshelfScreen({
                 showPercent={true}
             />
         ),
-        []
+        [handleOnPress, handleOnLongPress]
     );
 
     return (
